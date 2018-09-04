@@ -1,1 +1,3 @@
-console.log('Script loaded.');
+window.onload = () => {
+    console.log('index.js loaded.');
+};

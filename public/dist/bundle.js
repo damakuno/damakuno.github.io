@@ -70,11 +70,14 @@
 __webpack_require__(1);
 __webpack_require__(2);
 
+
 /***/ }),
 /* 1 */
 /***/ (function(module, exports) {
 
-console.log('Script loaded.');
+window.onload = () => {
+    console.log('index.js loaded.');
+};
 
 /***/ }),
 /* 2 */
@@ -116,7 +119,7 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "body {\r\n    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;\r\n}\r\n", ""]);
+exports.push([module.i, "body {\r\n    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;\r\n}\r\n\r\n.container {\r\n    display: grid;\r\n    grid-template-columns: 10% 20% auto 20% 10%;\r\n    grid-template-rows: 20% 30% auto;    \r\n}\r\n\r\n.item-h {\r\n    grid-column-start: 3;\r\n    grid-column-end: 3;\r\n    grid-row-start: 1;\r\n    grid-row-end: 1;\r\n    justify-self: center;\r\n}", ""]);
 
 // exports
 
