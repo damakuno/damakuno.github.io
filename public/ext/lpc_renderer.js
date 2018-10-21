@@ -1,3 +1,13 @@
+let local_data = {
+    time_axis: [],
+    temperature: [],
+    acceleration: [],
+    lux: [],
+    emergency_elapsed: 0    
+}
+
 window.onload = () => {
-    alert('lpc_renderer loaded.');
+   console.log('lpc_renderer loaded.');
+   
+
 }
