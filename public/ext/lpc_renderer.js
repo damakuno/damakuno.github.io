@@ -1,3 +1,3 @@
 window.onload = () => {
-    alert('lpc_renderer loaded.')
+    alert('lpc_renderer loaded.');
 }
