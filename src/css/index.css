@@ -10,8 +10,8 @@ body {
 
 .container {
     display: grid;
-    grid-template-columns: 10% 20% auto 20% 10%;
-    grid-template-rows: 8% 10% 20% auto 12%; 
+    grid-template-columns: 10% 10% auto 10% 10%;
+    grid-template-rows: 8% 15% 40% auto 12%; 
     width: 100vw;
     height: 100vh;
 }
@@ -34,7 +34,30 @@ body {
 }
 
 .logo {
-    border-radius: 14vw;
-    width: 25vh;
-    height: 25vh;
+    border-radius: 8vw;
+    width: 15vh;
+    height: 15vh;
+}
+
+.item-slides {
+    grid-column-start: 3;
+    grid-column-end: 3;
+    grid-row-start: 3;
+    grid-row-end: 4;
+    justify-self: center;
+}
+
+.items-slides img {
+    min-width: 100%;
+    min-height: 100%;
+    display: block;
+    object-fit: cover
+}
+
+.item-audio {
+    grid-column-start: 3;
+    grid-column-end: 3;
+    grid-row-start: 5;
+    grid-row-end: 5;
+    justify-self: center;
 }

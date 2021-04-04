@@ -1,6 +1,7 @@
 let path = require('path');
 
 module.exports = {
+  mode: 'production',
   entry: './public/app.js',
   output: {
     path: path.resolve(__dirname + '/public/dist'),
