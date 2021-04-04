@@ -8,8 +8,11 @@ module.exports = {
     publicPath: "/public/dist/",
     filename: 'bundle.js'
   },
-  devServer: {
+  devServer: {  
     watchContentBase: true
+  },
+  watchOptions: {
+    ignored: ['**/res', '**/node_modules', '**/src/aup'],
   },
   module: {
     rules: [{
