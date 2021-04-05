@@ -31,7 +31,7 @@ body {
     grid-column-start: 3;
     grid-column-end: 3;
     grid-row-start: 2;
-    grid-row-end: 2;
+    grid-row-end: 3;
     justify-self: center;
 }
 
@@ -40,6 +40,22 @@ body {
     border-radius: 8vw;
     width: 15vh;
     height: 15vh;
+}
+
+.item-visualizer{
+    z-index: 99;
+    grid-column-start: 3;
+    grid-column-end: 3;
+    grid-row-start: 4;
+    grid-row-end: 4;
+    justify-self: center;
+    display: flex;
+    align-items: flex-end;
+    background-color: #ffffff00;
+}
+
+.item-visualizer div {
+    background-color: #ffffff00;
 }
 
 .item-slides {
