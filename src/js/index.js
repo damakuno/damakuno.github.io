@@ -1,5 +1,7 @@
 import anime from 'animejs/lib/anime.es.js';
 
+const SONG_BPM = 92;
+const LAST_SLIDE = 9;
 const bpm_to_interval = (value) => {
     let bps = (value / 60);
     return (1 / bps) * 1000;
@@ -22,9 +24,67 @@ window.onload = () => {
         targets: '#image_logo',
         scale: '1.1',
         loop: true,
-        duration: bpm_to_interval(92),
+        duration: bpm_to_interval(SONG_BPM),
         autoplay: false
     });
+
+    let image_slide = document.querySelector('#image_slide');
+
+    // let tl_slides = anime.timeline({
+    //     easing: 'linear',
+    // });
+
+    // let fade_in_anim = {
+    //     targets: '#image_slide',
+    //     opacity: '1',
+    //     duration: bpm_to_interval(SONG_BPM)
+    // };
+
+    // tl_slides.add(fade_in_anim).add({
+    //     targets: '#image_slide',
+    //     opacity: '0',
+    //     delay: bpm_to_interval(SONG_BPM),
+    //     duration: bpm_to_interval(SONG_BPM),
+    //     complete: (anim) => {
+    //         image_slide.src = 'res/slide2.jpg';
+    //     }
+    // });
+    let slide_num = 1;
+
+    let increment_slide_num = (max) => {
+        if (slide_num === max) {
+            slide_num = 1
+        } else {
+            slide_num += 1;
+        }
+    }
+
+    let fade_in_anim = anime({
+        targets: '#image_slide',
+        opacity: '1',
+        duration: bpm_to_interval(SONG_BPM / 8),
+        complete: (fi_anim) => {
+            anime({
+                targets: '#image_slide',
+                opacity: '0',
+                delay: bpm_to_interval(SONG_BPM / 16),
+                duration: bpm_to_interval(SONG_BPM / 8),
+                complete: (fo_anim) => {
+                    increment_slide_num(LAST_SLIDE);
+                    image_slide.src = `res/slide${slide_num}.jpg`;
+                    if (image_slide.complete) {
+                        fi_anim.restart();
+                    }
+                    else {
+                        image_slide.addEventListener('load', (e)=>{
+                            fi_anim.restart();
+                        });
+                    }
+                }
+            })
+        }
+    });
+
     console.log('index.js loaded.');
 
     let audio_player = document.querySelector('#audio_player');
@@ -58,22 +118,22 @@ window.onload = () => {
                     anime({
                         targets: `.item-visualizer div:nth-child(${index + 1})`,
                         translateY: dy > 10 ? `-${value * 2.5}px` : `-${prevArray[index] * 2.5}px`,
-                        translateY: `-${value * 2.5}px`,
-                        duration: bpm_to_interval(92 * (4 - scale(dy, 0, 255, 0, 3))),
+                        // translateY: `-${value * 2.5}px`,
+                        duration: bpm_to_interval(SONG_BPM * (4 - scale(dy, 0, 255, 0, 3))),
                         easing: 'linear',
                         complete: (anim) => {
                             if (pauseFlag) {
                                 anime({
                                     targets: `.item-visualizer div:nth-child(${index + 1})`,
                                     translateY: `0px`,
-                                    duration: bpm_to_interval(92),
+                                    duration: bpm_to_interval(SONG_BPM),
                                     easing: 'easeInOutCirc'
                                 });
                             }
                         }
                     });
                 });
-            }, bpm_to_interval(92 * 4));
+            }, bpm_to_interval(SONG_BPM * 4));
 
         }, 500);
     });
