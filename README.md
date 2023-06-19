@@ -1,2 +1,2 @@
 # damakuno.github.io
-My github page
+Fun github page
